@@ -3,16 +3,16 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaService } from './prisma.service.js';
-import { BoardsController } from './boards/boards.controller';
 import { BoardsModule } from './boards/boards.module';
-import { BoardsService } from './boards/boards.service';
+import { TasksModule } from './tasks/tasks.module';
+import { PrismaModule } from './prisma.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
     isGlobal: true,
     envFilePath: '.env',
-  }), BoardsModule],
-  controllers: [AppController, BoardsController],
-  providers: [AppService, PrismaService, BoardsService],
+  }), BoardsModule, TasksModule, PrismaModule],
+  controllers: [AppController],
+  providers: [AppService, PrismaService],
 })
 export class AppModule {}
