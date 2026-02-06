@@ -1,9 +1,8 @@
-import { Injectable } from "@nestjs/common";
-import { PrismaService } from "src/prisma.service";
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/prisma.service';
 import { Board, Prisma } from '../../generated/prisma/client';
-import { CreateBoardDto } from "./dto/createBoard.dto";
-import { UpdateBoardDto } from "./dto/updateBoard.dto";
-
+import { CreateBoardDto } from './dto/createBoard.dto';
+import { UpdateBoardDto } from './dto/updateBoard.dto';
 
 @Injectable()
 export class BoardsService {
@@ -24,19 +23,20 @@ export class BoardsService {
     });
   }
 
-
   findById(id: string): Promise<Board | null> {
     return this.prisma.board.findUnique({
       where: { id },
-      include: { tasks: {
-        orderBy: {position: 'asc'}
-      } },
+      include: {
+        tasks: {
+          orderBy: { position: 'asc' },
+        },
+      },
     });
   }
 
   delete(id: string) {
     return this.prisma.board.delete({
       where: { id },
-    }); 
+    });
   }
 }

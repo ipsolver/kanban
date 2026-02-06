@@ -1,7 +1,6 @@
-import { IsEnum, IsInt, IsString, Min, ValidateNested } from "class-validator";
+import { IsEnum, IsInt, IsString, Min, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ColumnType } from 'generated/prisma/enums';
-
 
 class ChangeOrderDto {
   @IsString()
@@ -16,7 +15,7 @@ class ChangeOrderDto {
 }
 
 export class ReorderTasksDto {
-    @ValidateNested({each: true})
-    @Type(() => ChangeOrderDto)
-    tasks: ChangeOrderDto[];
+  @ValidateNested({ each: true })
+  @Type(() => ChangeOrderDto)
+  tasks: ChangeOrderDto[];
 }
