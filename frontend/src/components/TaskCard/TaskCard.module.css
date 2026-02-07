@@ -1,5 +1,6 @@
 .card {
     border: 2px solid #000;
+    border-radius: 5px;
     padding: 12px;
     margin-bottom: 12px;
     background: #ede0e0;
@@ -8,10 +9,21 @@
     gap: 8px;
 }
 
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
 .title {
     color: black;
     margin: 0;
     font-size: 16px;
+    cursor: pointer;
+}
+
+.title:hover {
+    color: #333;
+    scale: 1.05;
 }
 
 .description {
@@ -22,11 +34,11 @@
 
 .actions {
     display: flex;
-    gap: 6px;
+    gap: 5px;
 }
 
 .actions button {
-    background: none;
+    background: rgb(171, 171, 171);
     border: none;
     cursor: pointer;
 }

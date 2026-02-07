@@ -1,19 +1,19 @@
 import styles from './Column.module.css';
 import { TaskCard } from '../TaskCard/TaskCard';
-
-type Task = {
-  id: string;
-  title: string;
-  description: string;
-};
+import type { Task } from '../../types/task';
 
 type Props = {
   title: string;
+  type: Task['type'];
   tasks: Task[];
   showAdd?: boolean;
 };
 
-export const Column = ({title, tasks, showAdd}: Props) => {
+export const Column = ({ title, type, tasks, showAdd }: Props) => {
+  const columnTasks = tasks
+    .filter(task => task.type === type)
+    .sort((a, b) => a.position - b.position);
+
   return (
     <div className={styles.column}>
       <div className={styles.header}>
@@ -22,11 +22,10 @@ export const Column = ({title, tasks, showAdd}: Props) => {
       </div>
 
       <div className={styles.list}>
-        {tasks.map(task => (
+        {columnTasks.map(task => (
           <TaskCard
             key={task.id}
-            title={task.title}
-            description={task.description}
+            task={task}
           />
         ))}
       </div>
