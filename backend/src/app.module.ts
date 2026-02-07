@@ -8,10 +8,15 @@ import { TasksModule } from './tasks/tasks.module';
 import { PrismaModule } from './prisma.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({
-    isGlobal: true,
-    envFilePath: '.env',
-  }), BoardsModule, TasksModule, PrismaModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env',
+    }),
+    BoardsModule,
+    TasksModule,
+    PrismaModule,
+  ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })

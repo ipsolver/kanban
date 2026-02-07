@@ -1,4 +1,12 @@
-import { IsEnum, IsInt, IsOptional, IsString, MaxLength, Min, MinLength } from 'class-validator';
+import {
+  IsEnum,
+  IsInt,
+  IsOptional,
+  IsString,
+  MaxLength,
+  Min,
+  MinLength,
+} from 'class-validator';
 import { ColumnType } from 'generated/prisma/enums';
 
 export class UpdateTaskDto {

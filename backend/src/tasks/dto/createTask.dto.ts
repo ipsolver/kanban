@@ -1,5 +1,4 @@
-import { IsEnum, IsInt, isNumber, IsString, MaxLength, Min, MinLength } from 'class-validator';
-import { ColumnType } from 'generated/prisma/enums';
+import { IsString, MaxLength, MinLength } from 'class-validator';
 
 export class CreateTaskDto {
   @IsString()
