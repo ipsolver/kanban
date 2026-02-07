@@ -1,0 +1,23 @@
+.board {
+  margin-top: 24px;
+}
+
+.boardTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.boardActions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.columns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+  gap: 24px;
+}
