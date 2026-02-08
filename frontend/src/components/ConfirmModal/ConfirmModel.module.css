@@ -1,0 +1,17 @@
+.modal {
+    width: 285px;
+    height: 100px;
+    border: 2px solid black;
+    position: absolute;
+    top: 28%;
+    left: 40%;
+    background: rgb(167, 156, 156);
+    color: black;
+    padding: 10px;
+}
+
+.buttons {
+    display: flex;
+    margin-left: 20%;
+    gap: 12px;
+}

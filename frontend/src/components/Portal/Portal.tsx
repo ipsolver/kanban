@@ -1,23 +1,24 @@
-// import { createPortal } from "react-dom";
-// import styles from "./Portal.module.css";
+import { createPortal } from 'react-dom';
+import styles from './Portal.module.css';
 
-// const modalRootEl = document.getElementById("modal");
+const modalRoot = document.getElementById('modal')!;
 
-// export function Portal({ open, children }) 
-// {
-//   if (!open) 
-//     return null;
+type Props = {
+  open: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+};
 
-//   return createPortal(
-//     <div className={styles.modalOverlay}>
-//       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-//         {children}
-//       </div>
-//     </div>,
-//     modalRootEl
-//   );
-// }
+export function Portal({ open, onClose, children }: Props) {
+  if (!open) 
+    return null;
 
-
-
-// ADD TYPE STRICT
+  return createPortal(
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+        {children}
+      </div>
+    </div>,
+    modalRoot
+  );
+}

@@ -1,0 +1,22 @@
+.modal {
+  background: #fff;
+  color: black;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #000;
+}
+
+.title {
+  margin: 0 0 12px;
+}
+
+.modalBody {
+  margin-bottom: 16px;
+}
+
+.modalFooter {
+  display: flex;
+  margin-top: 10px;
+  /* justify-content: flex-end; */
+  gap: 10px;
+}
