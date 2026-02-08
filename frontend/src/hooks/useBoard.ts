@@ -12,5 +12,23 @@ export function useBoard(boardId: string | null) {
         .then(res => setBoard(res.data));
     }, [boardId]);
 
-  return {board, setBoard};
+    const operations = {
+        async createBoard(name: string) {
+            const res = await boardsApi.create({name});
+            setBoard(res.data);
+            return res.data;
+        },
+
+        async updateBoard(id: string, name: string) {
+            const res = await boardsApi.update(id, {name});
+            setBoard(res.data);
+        },
+
+        async deleteBoard(id: string) {
+            await boardsApi.delete(id);
+            setBoard(null);
+        },
+    };
+
+  return {board, operations};
 }
