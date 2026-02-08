@@ -22,6 +22,7 @@ export function useBoard(boardId: string | null) {
         async updateBoard(id: string, name: string) {
             const res = await boardsApi.update(id, {name});
             setBoard(res.data);
+            return res.data;
         },
 
         async deleteBoard(id: string) {

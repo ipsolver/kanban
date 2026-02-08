@@ -17,7 +17,7 @@ export function useTasks(boardId: string | null): {tasks: Task[], operations: Ta
   const operations = {
     async createTask(data: Pick<Task, 'title' | 'description' | 'boardId'>) {
       const res = await tasksApi.create(data);
-      setTasks(prev => [...prev, res.data]);
+      setTasks(prev => [res.data, ...prev]);
       return res.data;
     },
 
