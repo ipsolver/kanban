@@ -1,5 +1,7 @@
 import styles from './Column.module.css';
-import { TaskCard } from '../TaskCard/TaskCard';
+import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import { useDroppable } from '@dnd-kit/core';
+import { SortableTaskCard } from '../TaskCard/SortableTaskCard';
 import type { Task } from '../../types/task';
 
 type Props = {
@@ -14,9 +16,9 @@ type Props = {
 };
 
 export const Column = ({ title, type, tasks, showAdd, onAddTask, onEditTask, onDeleteTask, onOpen }: Props) => {
-  const columnTasks = [...tasks]
-    .filter(task => task.type === type)
-    .sort((a, b) => a.position - b.position);
+  const columnTasks = tasks;
+
+  const { setNodeRef, isOver } = useDroppable({ id: type });
 
   return (
     <div className={styles.column}>
@@ -27,9 +29,10 @@ export const Column = ({ title, type, tasks, showAdd, onAddTask, onEditTask, onD
         >+</button>}
       </div>
 
-      <div className={styles.list}>
+      <div className={styles.list} ref={setNodeRef} data-over={isOver ? '1' : '0'}>
+        <SortableContext items={columnTasks.map((t) => t.id)} strategy={verticalListSortingStrategy}>
         {columnTasks.map(task => (
-          <TaskCard
+          <SortableTaskCard
             key={task.id}
             task={task}
             onEdit={onEditTask}
@@ -37,6 +40,7 @@ export const Column = ({ title, type, tasks, showAdd, onAddTask, onEditTask, onD
             onOpen={onOpen}
           />
         ))}
+        </SortableContext>
       </div>
     </div>
   );
