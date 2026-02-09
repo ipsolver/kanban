@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import type { Board } from '../../types/board';
 import { boardsApi } from '../../api/boards.api';
 
-type BoardState = {
+export type BoardState = {
   board: Board | null;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;

@@ -4,7 +4,7 @@ import type { Task } from '../../types/task';
 import type { ColumnType } from '../../types/column';
 import { tasksApi } from '../../api/tasks.api';
 
-type TasksState = {
+export type TasksState = {
   tasks: Task[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;

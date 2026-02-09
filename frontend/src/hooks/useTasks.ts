@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { tasksApi } from '../api/tasks.api';
 import type { Task } from '../types/task';
 import type { TaskOperations } from '../types/TaskOperations';
+import { reorderTasks, tasksActions } from '../features/tasks/tasksSlice';
+import type { ReorderPatch } from '../features/tasks/tasksSlice';
 
 export function useTasks(boardId: string | null): {tasks: Task[], operations: TaskOperations} {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -32,6 +34,11 @@ export function useTasks(boardId: string | null): {tasks: Task[], operations: Ta
       await tasksApi.delete(id);
       setTasks(prev => prev.filter(t => t.id !== id));
     },
+
+  //  async reorder(patches: ReorderPatch[]) {
+  //       dispatch(tasksActions.applyReorderOptimistic(patches));
+  //       return dispatch(reorderTasks({ patches }));
+  //     },
   };
 
   return {
