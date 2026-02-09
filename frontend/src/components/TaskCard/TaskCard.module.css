@@ -1,0 +1,44 @@
+.card {
+    border: 2px solid #000;
+    border-radius: 5px;
+    padding: 12px;
+    margin-bottom: 12px;
+    background: #ede0e0;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    color: black;
+    margin: 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.title:hover {
+    color: #333;
+    scale: 1.05;
+}
+
+.description {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.actions {
+    display: flex;
+    gap: 5px;
+}
+
+.actions button {
+    background: rgb(171, 171, 171);
+    border: none;
+    cursor: pointer;
+}
