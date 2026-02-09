@@ -1,4 +1,5 @@
-import styles from './ConfirmModel.module.css';
+import modalStyles from '../Modal/Modal.module.css';
+import { Modal } from '../Modal/Modal';
 
 type Props = {
   text: string;
@@ -7,11 +8,17 @@ type Props = {
 };
 
 export const ConfirmModal = ({ text, onConfirm, onClose }: Props) => (
-  <div className={styles.modal}>
+   <Modal
+    open
+    onClose={onClose}
+    title="Confirm"
+    footer={
+        <div className={modalStyles.buttons}>
+          <button className={modalStyles.attention} onClick={onConfirm}>Delete</button>
+          <button onClick={onClose}>Cancel</button>
+        </div>
+    }
+  >
     <p>{text}</p>
-    <div className={styles.buttons}>
-      <button onClick={onConfirm}>Yes</button>
-      <button onClick={onClose}>Cancel</button>
-    </div>
-  </div>
+  </Modal>
 );

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Modal } from '../Modal/Modal';
 import type { Task } from '../../types/task';
+import modalStyles from '../Modal/Modal.module.css';
 
 type Props = {
   open: boolean;
@@ -25,6 +26,8 @@ export function TaskModal({ open, onClose, initialTask, onSubmit }: Props) {
   }, [initialTask, open]);
 
   const handleSubmit = () => {
+    if (!title.trim() || !description.trim()) 
+      return;
     onSubmit({ title, description });
     onClose();
   };
@@ -34,23 +37,31 @@ export function TaskModal({ open, onClose, initialTask, onSubmit }: Props) {
       open={open}
       onClose={onClose}
       title={initialTask ? 'Edit task' : 'Create task'}
+      footer={
+        <div className={modalStyles.buttons}>
+          <button className={modalStyles.secondary} onClick={onClose}>Cancel</button>
+          <button className={modalStyles.primary} onClick={handleSubmit} disabled={!title.trim()}>
+            {initialTask ? 'Save' : 'Create'}
+          </button>
+        </div>
+      }
     >
-      <div>
+      <div className={modalStyles.field}>
         <input
+          className={modalStyles.input}
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+      </div>
 
+      <div className={modalStyles.field}>
         <textarea
+          className={modalStyles.textarea}
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-
-        <button onClick={handleSubmit}>
-          {initialTask ? 'Save' : 'Create'}
-        </button>
       </div>
     </Modal>
   );
