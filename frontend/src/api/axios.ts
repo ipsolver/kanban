@@ -4,7 +4,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 console.log("ENV:", API_URL);
 
 export const api = axios.create({
-  baseURL: 'https://kanban-production-337f.up.railway.app',
+  baseURL: API_URL,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
