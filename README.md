@@ -7,6 +7,7 @@ The project demonstrates clean architecture, modern React state management, drag
 
 ## Table of Contents
 
+* [Deployment](#-deployment)
 * [Requirements](#-requirements)
 * [Project Overview](#-project-overview)
 * [Getting Started](#-getting-started)
@@ -26,6 +27,17 @@ The project demonstrates clean architecture, modern React state management, drag
   * [Drag & Drop](#drag--drop)
   * [Project Structure](#project-structure)
 * [Testing](#-testing)
+
+---
+## Deployment
+The application is fully deployed using modern cloud platforms.
+
+### Production Stack
+- backend - Railway
+- frontend - Vercel
+- Database - PostgreSQL (on Railway)
+
+Link for delpoy project: https://kanban-seven-sigma.vercel.app
 
 ---
 
